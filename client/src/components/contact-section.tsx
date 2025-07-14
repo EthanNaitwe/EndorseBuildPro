@@ -36,9 +36,10 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactInquiry) => {
-      // Send data to the new endpoint with the 'sheet' field
+      // Add 'name' field for the API, keeping firstName and lastName for validation
       const response = await axios.post('http://localhost:5000/api/v1/settings/message', {
         ...data,
+        name: `${data.firstName} ${data.lastName}`.trim(),
         sheet: "Endorse 256 Services"
       });
       return response.data;
@@ -59,9 +60,9 @@ export default function ContactSection() {
       });
     },
   });
-
   const onSubmit = (data: InsertContactInquiry) => {
     contactMutation.mutate(data);
+  };
   };
 
   return (
