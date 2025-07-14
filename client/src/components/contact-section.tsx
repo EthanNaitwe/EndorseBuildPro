@@ -1,16 +1,15 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
-import { insertContactInquirySchema, type InsertContactInquiry } from "@shared/schema";
-import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { insertContactInquirySchema, type InsertContactInquiry } from "@shared/schema";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { Clock, Mail, MapPin, Phone, Send } from "lucide-react";
+import { useForm } from "react-hook-form";
 
 const contactFormSchema = insertContactInquirySchema.extend({
   firstName: insertContactInquirySchema.shape.firstName.min(2, "First name must be at least 2 characters"),
@@ -37,8 +36,12 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactInquiry) => {
-      const response = await apiRequest("POST", "/api/contact", data);
-      return response.json();
+      // Send data to the new endpoint with the 'sheet' field
+      const response = await axios.post('http://localhost:5000/api/v1/settings/message', {
+        ...data,
+        sheet: "Endorse 256 Services"
+      });
+      return response.data;
     },
     onSuccess: () => {
       toast({
