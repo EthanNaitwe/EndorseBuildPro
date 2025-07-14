@@ -1,4 +1,5 @@
 import { Phone, Mail, MapPin, Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import logoImage from "@assets/image_1752500360807.png";
 
 export default function Footer() {
   const scrollToSection = (sectionId: string) => {
@@ -15,7 +16,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center mb-4">
               <img 
-                src="/attached_assets/image_1752500360807.png" 
+                src={logoImage} 
                 alt="Endorse256Services Logo" 
                 className="h-6 w-auto mr-3 invert"
               />

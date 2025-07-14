@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X } from "lucide-react";
+import logoImage from "@assets/image_1752500360807.png";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function Header() {
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
             <img 
-              src="/attached_assets/image_1752500360807.png" 
+              src={logoImage} 
               alt="Endorse256Services Logo" 
               className="h-8 w-auto mr-3"
             />
