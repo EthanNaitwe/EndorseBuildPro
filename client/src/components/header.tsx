@@ -25,7 +25,7 @@ export default function Header() {
               alt="Endorse256Services Logo" 
               className="h-8 w-auto mr-3"
             />
-            <h1 className="text-2xl font-bold text-white">Endorse256Services</h1>
+            {/* <h1 className="text-2xl font-bold text-white">Endorse256Services</h1> */}
           </div>
           
           <nav className="hidden md:flex space-x-8">

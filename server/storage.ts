@@ -51,7 +51,7 @@ export class MemStorage implements IStorage {
         company: "Nakato Enterprises",
         message: "Outstanding commercial construction services. Our office building was completed on time and within budget.",
         rating: 5,
-        imageUrl: "https://images.unsplash.com/photo-1494790108755-2616b332e234?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
+        imageUrl: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=100&h=100",
         isApproved: true,
         createdAt: new Date(),
       },

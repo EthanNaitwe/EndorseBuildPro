@@ -20,7 +20,7 @@ export default function Footer() {
                 alt="Endorse256Services Logo" 
                 className="h-6 w-auto mr-3 invert"
               />
-              <h3 className="text-xl font-bold">Endorse256Services</h3>
+              {/* <h3 className="text-xl font-bold">Endorse256Services</h3> */}
             </div>
             <p className="text-gray-300 mb-4">
               Professional construction services with uncompromising quality and reliability.
