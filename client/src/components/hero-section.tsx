@@ -10,7 +10,7 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative bg-gray-900 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/50"></div>
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{
@@ -19,11 +19,11 @@ export default function HeroSection() {
       />
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="max-w-3xl">
-          <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+          <h2 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-lg">
             Building Excellence,<br />
-            <span className="text-brand-accent">Delivering Trust</span>
+            <span className="text-yellow-400">Delivering Trust</span>
           </h2>
-          <p className="text-xl lg:text-2xl mb-8 text-gray-200">
+          <p className="text-xl lg:text-2xl mb-8 text-white drop-shadow-md">
             Professional construction services with uncompromising quality and reliability. 
             We build what matters to you.
           </p>

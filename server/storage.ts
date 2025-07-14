@@ -97,6 +97,8 @@ export class MemStorage implements IStorage {
       id,
       createdAt: new Date(),
       isRead: false,
+      phone: inquiry.phone || null,
+      projectType: inquiry.projectType || null,
     };
     this.contactInquiries.set(id, contactInquiry);
     return contactInquiry;
@@ -129,6 +131,9 @@ export class MemStorage implements IStorage {
       id,
       isApproved: false,
       createdAt: new Date(),
+      company: testimonial.company || null,
+      rating: testimonial.rating || 5,
+      imageUrl: testimonial.imageUrl || null,
     };
     this.testimonials.set(id, newTestimonial);
     return newTestimonial;

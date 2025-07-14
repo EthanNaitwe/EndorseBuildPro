@@ -13,7 +13,14 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Endorse256Services</h3>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/attached_assets/image_1752500360807.png" 
+                alt="Endorse256Services Logo" 
+                className="h-6 w-auto mr-3 invert"
+              />
+              <h3 className="text-xl font-bold">Endorse256Services</h3>
+            </div>
             <p className="text-gray-300 mb-4">
               Professional construction services with uncompromising quality and reliability.
             </p>

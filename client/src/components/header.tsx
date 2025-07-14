@@ -19,6 +19,11 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
+            <img 
+              src="/attached_assets/image_1752500360807.png" 
+              alt="Endorse256Services Logo" 
+              className="h-8 w-auto mr-3"
+            />
             <h1 className="text-2xl font-bold text-white">Endorse256Services</h1>
           </div>
           
