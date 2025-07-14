@@ -36,10 +36,12 @@ export default function ContactSection() {
 
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactInquiry) => {
-      // Add 'name' field for the API, keeping firstName and lastName for validation
+      // Map projectType to subject and combine firstName/lastName into name
+      const { projectType, firstName, lastName, ...rest } = data;
       const response = await axios.post('http://localhost:5000/api/v1/settings/message', {
-        ...data,
-        name: `${data.firstName} ${data.lastName}`.trim(),
+        ...rest,
+        subject: projectType,
+        name: `${firstName} ${lastName}`.trim(),
         sheet: "Endorse 256 Services"
       });
       return response.data;
