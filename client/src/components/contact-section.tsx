@@ -63,7 +63,6 @@ export default function ContactSection() {
   const onSubmit = (data: InsertContactInquiry) => {
     contactMutation.mutate(data);
   };
-  };
 
   return (
     <section id="contact" className="py-16 bg-brand-bg">
