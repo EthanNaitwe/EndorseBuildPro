@@ -23,7 +23,7 @@ export default function Footer() {
               {/* <h3 className="text-xl font-bold">Endorse256Services</h3> */}
             </div>
             <p className="text-gray-300 mb-4">
-              Professional construction services with uncompromising quality and reliability.
+              ...Professional construction services with uncompromising quality and reliability.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white transition duration-300">

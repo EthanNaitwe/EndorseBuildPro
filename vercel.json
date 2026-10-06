@@ -1,0 +1,40 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/public"
+      }
+    },
+    {
+      "src": "api/**/*.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "^/api/contact$",
+      "methods": ["GET", "POST"],
+      "dest": "/api/contact.ts"
+    },
+    {
+      "src": "^/api/contact/([0-9]+)/read$",
+      "methods": ["PATCH"],
+      "dest": "/api/contactRead.ts"
+    },
+    {
+      "src": "^/api/testimonials$",
+      "methods": ["GET", "POST"],
+      "dest": "/api/testimonials.ts"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/.*",
+      "dest": "/dist/public/index.html"
+    }
+  ]
+}

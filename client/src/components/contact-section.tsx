@@ -37,12 +37,13 @@ export default function ContactSection() {
   const contactMutation = useMutation({
     mutationFn: async (data: InsertContactInquiry) => {
       // Map projectType to subject and combine firstName/lastName into name
-      const { projectType, firstName, lastName, ...rest } = data;
-      const response = await axios.post('http://localhost:5000/api/v1/settings/message', {
-        ...rest,
-        subject: projectType,
-        name: `${firstName} ${lastName}`.trim(),
-        sheet: "Endorse 256 Services"
+      const response = await axios.post('/api/contact', {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        phone: data.phone,
+        projectType: data.projectType,
+        message: data.message,
       });
       return response.data;
     },
@@ -173,7 +174,14 @@ export default function ContactSection() {
                     <FormItem>
                       <FormLabel>Phone Number</FormLabel>
                       <FormControl>
-                        <Input type="tel" placeholder="Enter your phone number" {...field} />
+                        <Input
+                          type="tel"
+                          placeholder="Enter your phone number"
+                          value={field.value ?? ""}
+                          onChange={field.onChange}
+                          onBlur={field.onBlur}
+                          ref={field.ref}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -186,21 +194,21 @@ export default function ContactSection() {
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>Project Type</FormLabel>
-                      <Select onValueChange={field.onChange} value={field.value}>
-                        <FormControl>
+                      <FormControl>
+                        <Select onValueChange={(val) => field.onChange(val)} value={field.value ?? ""}>
                           <SelectTrigger>
                             <SelectValue placeholder="Select a service" />
                           </SelectTrigger>
-                        </FormControl>
-                        <SelectContent>
-                          <SelectItem value="residential">Residential Construction</SelectItem>
-                          <SelectItem value="commercial">Commercial Construction</SelectItem>
-                          <SelectItem value="infrastructure">Infrastructure Development</SelectItem>
-                          <SelectItem value="renovation">Renovation & Remodeling</SelectItem>
-                          <SelectItem value="consultation">Construction Consultation</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
+                          <SelectContent>
+                            <SelectItem value="residential">Residential Construction</SelectItem>
+                            <SelectItem value="commercial">Commercial Construction</SelectItem>
+                            <SelectItem value="infrastructure">Infrastructure Development</SelectItem>
+                            <SelectItem value="renovation">Renovation & Remodeling</SelectItem>
+                            <SelectItem value="consultation">Construction Consultation</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

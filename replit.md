@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a modern construction company website built as a single-page application (SPA) for Endorse256Services, a Ugandan construction company founded by Nuwagaba Goodhope. The application features a complete business showcase with contact inquiry management, testimonials, and a professional portfolio display.
+This is a modern construction company website built as a single-page application (SPA) for Endorse256Services, a Ugandan construction company founded by Goodhope Nuwagaba. The application features a complete business showcase with contact inquiry management, testimonials, and a professional portfolio display.
 
 ## User Preferences
 

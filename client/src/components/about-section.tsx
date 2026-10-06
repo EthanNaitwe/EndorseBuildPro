@@ -1,4 +1,5 @@
 import { CheckCircle } from "lucide-react";
+import Screenshot2 from "../../images/Screenshot2.png";
 
 export default function AboutSection() {
   return (
@@ -10,7 +11,7 @@ export default function AboutSection() {
               About Endorse256Services
             </h2>
             <p className="text-lg text-brand-text mb-6">
-              Founded by <span className="font-semibold text-brand-dark">Nuwagaba Goodhope</span>, Endorse256Services has established itself as a trusted name in Uganda's construction industry. Our commitment to excellence and innovative approach to construction has made us the preferred choice for clients seeking quality and reliability.
+              Founded by <span className="font-semibold text-brand-dark">Goodhope Nuwagaba</span>, Endorse256Services has established itself as a trusted name in Uganda's construction industry. Our commitment to excellence and innovative approach to construction has made us the preferred choice for clients seeking quality and reliability.
             </p>
             <p className="text-lg text-brand-text mb-6">
               We believe that every construction project is an opportunity to create lasting value for our clients and communities. Our team of skilled professionals brings years of experience and a passion for building excellence to every project we undertake.
@@ -32,12 +33,12 @@ export default function AboutSection() {
           </div>
           <div>
             <div className="bg-brand-bg rounded-lg p-8 text-center">
-              <img 
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&h=400" 
-                alt="Nuwagaba Goodhope - Founder" 
+              <img
+                src={Screenshot2}
+                alt="Goodhope Nuwagaba - Founder"
                 className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
               />
-              <h3 className="text-xl font-semibold text-brand-dark mb-2">Nuwagaba Goodhope</h3>
+              <h3 className="text-xl font-semibold text-brand-dark mb-2">Goodhope Nuwagaba</h3>
               <p className="text-brand-blue font-medium mb-4">Founder & CEO</p>
               <p className="text-brand-text">
                 With over 15 years of experience in construction and project management, Nuwagaba leads our team with a vision of building excellence and delivering exceptional results for every client.
