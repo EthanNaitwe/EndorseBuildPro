@@ -1,4 +1,5 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
+import heroBg from "../../images/hero-bg.jpg";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {
@@ -10,13 +11,14 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="relative bg-gray-900 text-white overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/60"></div>
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')"
-        }}
+      <img
+        src={heroBg}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        onError={(e) => { e.currentTarget.style.display = "none"; }}
       />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/90 to-black/60"></div>
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
         <div className="max-w-3xl">
           <div className="bg-black/40 backdrop-blur-sm rounded-lg p-8 border border-white/10">
