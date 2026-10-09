@@ -1,0 +1,6 @@
+allowBuilds:
+  bufferutil: true
+  esbuild: true
+onlyBuiltDependencies:
+  - bufferutil
+  - esbuild
