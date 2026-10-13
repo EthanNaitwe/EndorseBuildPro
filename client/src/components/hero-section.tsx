@@ -1,5 +1,5 @@
 import { ArrowRight, ExternalLink } from "lucide-react";
-import heroBg from "../../images/hero-bg.jpg";
+import heroBg from "../../images/hero-bg-1.jpg";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId: string) => {

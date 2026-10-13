@@ -1,7 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import familyHomeImage from "../../images/family-home-1.jpg";
+import riverInstallImage from "../../images/river-install.jpg";
+import solarInstallImage from "../../images/solar-install.jpg";
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [selectedProject, setSelectedProject] = useState<(typeof projects)[number] | null>(null);
+
+  useEffect(() => {
+    if (!selectedProject) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject]);
 
   const projects = [
     {
@@ -9,24 +27,24 @@ export default function PortfolioSection() {
       title: "Modern Family Home",
       description: "Contemporary 4-bedroom home with sustainable design features and energy-efficient systems.",
       category: "residential",
-      image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      completionYear: "2023"
+      image: familyHomeImage,
+      completionYear: "2024"
     },
-    {
-      id: 2,
-      title: "Corporate Office Complex",
-      description: "15-story office building with modern amenities and LEED certification standards.",
-      category: "commercial",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      completionYear: "2023"
-    },
+    // {
+    //   id: 2,
+    //   title: "Corporate Office Complex",
+    //   description: "15-story office building with modern amenities and LEED certification standards.",
+    //   category: "commercial",
+    //   image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
+    //   completionYear: "2023"
+    // },
     {
       id: 3,
-      title: "River Bridge Construction",
-      description: "Major infrastructure project connecting two communities with a 200-meter steel bridge.",
+      title: "HVAC equipment Installation",
+      description: "Installation of a commercial HVAC system to provide efficient cooling and climate control within a building.",
       category: "infrastructure",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      completionYear: "2022"
+      image: riverInstallImage,
+      completionYear: "2023"
     },
     {
       id: 4,
@@ -38,11 +56,11 @@ export default function PortfolioSection() {
     },
     {
       id: 5,
-      title: "Shopping Center Development",
-      description: "Large-scale retail complex with 100+ shops and entertainment facilities.",
-      category: "commercial",
-      image: "https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      completionYear: "In Progress"
+      title: "Solar Power System Installation",
+      description: "Installation of a solar power system featuring a FelicitySolar inverter, battery storage unit, and electrical distribution panel for reliable, energy-efficient power supply.",
+      category: "Infrastructure",
+      image: solarInstallImage,
+      completionYear: "2024"
     },
     {
       id: 6,
@@ -141,11 +159,18 @@ export default function PortfolioSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
             <div key={project.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition duration-300">
-              <img 
-                src={project.image} 
-                alt={project.title} 
-                className="w-full h-48 object-cover"
-              />
+              <button
+                type="button"
+                onClick={() => setSelectedProject(project)}
+                className="block w-full text-left cursor-zoom-in"
+                aria-label={`View ${project.title}`}
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  className="w-full h-48 object-cover transition-transform duration-300 hover:scale-105"
+                />
+              </button>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-brand-dark">{project.title}</h3>
                 <p className="text-brand-text mb-4">{project.description}</p>
@@ -154,7 +179,7 @@ export default function PortfolioSection() {
                     {getCategoryLabel(project.category)}
                   </span>
                   <span className="text-sm text-brand-text">
-                    Completed {project.completionYear}
+                    Completed: {project.completionYear}
                   </span>
                 </div>
               </div>
@@ -162,6 +187,35 @@ export default function PortfolioSection() {
           ))}
         </div>
       </div>
+
+      {selectedProject && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setSelectedProject(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full rounded-2xl bg-white p-3 shadow-2xl"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelectedProject(null)}
+              className="absolute right-5 top-5 z-10 rounded-full bg-black/60 px-3 py-1 text-sm font-medium text-white hover:bg-black/80"
+            >
+              Close
+            </button>
+            <img
+              src={selectedProject.image}
+              alt={selectedProject.title}
+              className="max-h-[80vh] w-full rounded-xl object-contain"
+            />
+            <div className="px-2 pb-2 pt-4">
+              <h3 className="text-2xl font-semibold text-brand-dark">{selectedProject.title}</h3>
+              <p className="mt-2 text-brand-text">{selectedProject.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
